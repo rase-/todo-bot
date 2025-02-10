@@ -5,6 +5,7 @@ import { Memory } from "@mastra/memory";
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 import { execSync } from "child_process";
+import { openai } from "@ai-sdk/openai";
 
 // export const weatherInfo = createTool({
 //   id: "Get Weather Information",
@@ -118,7 +119,7 @@ export const weatherInfo = createTool({
 
 export const sysAdminAgent = new Agent({
   name: "SysAdmin",
-  model: { provider: "OPEN_AI", name: "gpt-4o" },
+  model: openai("gpt-4o"),
   tools: { shellTool },
   instructions: "You help manage systems via shell commands",
 
@@ -145,11 +146,8 @@ export const memoryAgent = new Agent({
   instructions: "You are a helpful AI assistant",
 
   tools: { weatherInfo },
-  model: {
-    provider: "OPEN_AI",
-    name: "gpt-4o",
-    toolChoice: "auto",
-  },
+
+  model: openai("gpt-4o"),
 
   memory: new Memory({
     options: {
