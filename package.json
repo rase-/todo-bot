@@ -1,0 +1,30 @@
+{
+  "name": "mastra-test-3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "mastra dev",
+    "coder": "tsx ./src/coder.ts",
+    "chat": "tsx ./src/chat.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@mastra/core": "^0.2.0-alpha.92",
+    "@mastra/memory": "^0.1.0-alpha.73",
+    "@mastra/store-pg": "^0.0.0-alpha.8",
+    "@mastra/vector-libsql": "^0.1.0-alpha.24",
+    "ora": "^8.2.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "mastra": "^0.2.0-alpha.141",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

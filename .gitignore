@@ -1,0 +1,7 @@
+output.txt
+node_modules
+dist
+.mastra
+.DS_Store
+example.db
+vector.db
