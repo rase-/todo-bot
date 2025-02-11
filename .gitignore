@@ -5,3 +5,6 @@ dist
 .DS_Store
 example.db
 vector.db
+config.db
+memory.db
+logs.txt
