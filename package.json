@@ -18,6 +18,7 @@
     "@mastra/core": "0.2.0-alpha.100",
     "@mastra/memory": "0.1.0-alpha.82",
     "ai": "^4.1.34",
+    "fastembed": "^1.14.1",
     "ora": "^8.2.0",
     "zod": "^3.24.1"
   },
