@@ -166,7 +166,7 @@ export const memoryAgent = new Agent({
       },
     },
 
-    embedder: localEmbedder("bge-base-en-v1.5"),
+    embedder: localEmbedder("bge-small-en-v1.5"),
     vector: new DefaultVectorDB({
       connectionUrl: "file:memory-vector.db",
     }),
