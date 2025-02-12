@@ -8,3 +8,4 @@ vector.db
 config.db
 memory.db
 logs.txt
+memory-vector.db
