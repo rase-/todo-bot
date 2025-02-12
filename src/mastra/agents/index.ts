@@ -1,11 +1,16 @@
 import { Agent } from "@mastra/core/agent";
-import { MastraStorageLibSql } from "@mastra/core/storage";
+import {
+  DefaultStorage,
+  DefaultVectorDB,
+  MastraStorageLibSql,
+} from "@mastra/core/storage";
 import { Memory } from "@mastra/memory";
 
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 import { execSync } from "child_process";
 import { openai } from "@ai-sdk/openai";
+import { localEmbedder } from "@mastra/core/vector";
 
 // export const weatherInfo = createTool({
 //   id: "Get Weather Information",
@@ -152,15 +157,22 @@ export const memoryAgent = new Agent({
   memory: new Memory({
     options: {
       lastMessages: 1,
-      semanticRecall: false,
+      semanticRecall: {
+        topK: 1,
+        messageRange: 0,
+      },
       workingMemory: {
-        enabled: true,
+        enabled: false,
       },
     },
 
-    storage: new MastraStorageLibSql({
+    embedder: localEmbedder("bge-base-en-v1.5"),
+    vector: new DefaultVectorDB({
+      connectionUrl: "file:memory-vector.db",
+    }),
+    storage: new DefaultStorage({
       config: {
-        url: "file:example.db",
+        url: "file:memory.db",
       },
     }),
   }),
