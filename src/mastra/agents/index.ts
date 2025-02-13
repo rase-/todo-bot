@@ -122,29 +122,6 @@ export const weatherInfo = createTool({
   },
 });
 
-export const sysAdminAgent = new Agent({
-  name: "SysAdmin",
-  model: openai("gpt-4o"),
-  tools: { shellTool },
-  instructions: "You help manage systems via shell commands",
-
-  memory: new Memory({
-    options: {
-      lastMessages: 1,
-      semanticRecall: false,
-      workingMemory: {
-        enabled: true,
-      },
-    },
-
-    storage: new MastraStorageLibSql({
-      config: {
-        url: "file:example.db",
-      },
-    }),
-  }),
-});
-
 export const memoryAgent = new Agent({
   name: "Memory Agent",
 
@@ -153,27 +130,4 @@ export const memoryAgent = new Agent({
   tools: { weatherInfo },
 
   model: openai("gpt-4o"),
-
-  memory: new Memory({
-    options: {
-      lastMessages: 1,
-      semanticRecall: {
-        topK: 1,
-        messageRange: 0,
-      },
-      workingMemory: {
-        enabled: false,
-      },
-    },
-
-    embedder: localEmbedder("bge-small-en-v1.5"),
-    vector: new DefaultVectorDB({
-      connectionUrl: "file:memory-vector.db",
-    }),
-    storage: new DefaultStorage({
-      config: {
-        url: "file:memory.db",
-      },
-    }),
-  }),
 });

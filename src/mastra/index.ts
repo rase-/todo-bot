@@ -1,12 +1,15 @@
 import { Mastra } from "@mastra/core/mastra";
+import { Memory } from "@mastra/memory";
 import { createLogger } from "@mastra/core/logger";
 
-import { memoryAgent, sysAdminAgent } from "./agents";
+import { memoryAgent } from "./agents";
 
 export const mastra = new Mastra({
-  agents: { memoryAgent, sysAdminAgent },
+  agents: { memoryAgent },
   logger: createLogger({
     name: "Mastra",
     level: "info",
   }),
+
+  memory: new Memory(),
 });
