@@ -15,15 +15,15 @@
   "description": "",
   "dependencies": {
     "@ai-sdk/openai": "^1.1.11",
-    "@mastra/core": "0.2.0-alpha.107",
-    "@mastra/memory": "0.1.0-alpha.89",
+    "@mastra/core": "0.2.0-alpha.109",
+    "@mastra/memory": "0.1.0-alpha.91",
     "ai": "^4.1.38",
     "ora": "^8.2.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/node": "^22.13.2",
-    "mastra": "0.2.0-alpha.166",
+    "mastra": "0.2.0-alpha.168",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   }
