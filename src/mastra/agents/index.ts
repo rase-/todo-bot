@@ -1,16 +1,12 @@
 import { Agent } from "@mastra/core/agent";
-import {
-  DefaultStorage,
-  DefaultVectorDB,
-  MastraStorageLibSql,
-} from "@mastra/core/storage";
-import { Memory } from "@mastra/memory";
+import { DefaultStorage } from "@mastra/core/storage/libsql";
 
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 import { execSync } from "child_process";
 import { openai } from "@ai-sdk/openai";
-import { localEmbedder } from "@mastra/core/vector";
+import { Memory } from "@mastra/memory";
+import { DefaultVectorDB } from "@mastra/core/vector/libsql";
 
 // export const weatherInfo = createTool({
 //   id: "Get Weather Information",
@@ -122,6 +118,22 @@ export const weatherInfo = createTool({
   },
 });
 
+// const storage = new DefaultStorage({
+//   config: {
+//     url: "libsql://c01c3455-3745-4087-a75b-44721ed68b19-mastra.turso.io",
+//     authToken:
+//       "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mzk4MTAwNzAsInAiOnsicnciOnsibnMiOlsiMWIyZjYyMTgtOTI1MS00ZDk3LWIzMDctNzBkMTk3OGIyMjJmIl19fX0.0FqTfjNGPMGk9-Da_0-2cpS8B71uoyMmWnHriQg6ygFJvNNvCgZkKQYJIcrUWG32Df137sf1Knt2qU7uMBj0Bw",
+//   },
+// });
+// await storage.init();
+
+// const vector = new DefaultVectorDB({
+//   connectionUrl:
+//     "libsql://c01c3455-3745-4087-a75b-44721ed68b19-mastra.turso.io",
+//   authToken:
+//     "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mzk4MTAwNzAsInAiOnsicnciOnsibnMiOlsiMWIyZjYyMTgtOTI1MS00ZDk3LWIzMDctNzBkMTk3OGIyMjJmIl19fX0.0FqTfjNGPMGk9-Da_0-2cpS8B71uoyMmWnHriQg6ygFJvNNvCgZkKQYJIcrUWG32Df137sf1Knt2qU7uMBj0Bw",
+// });
+
 export const memoryAgent = new Agent({
   name: "Memory Agent",
 
@@ -130,4 +142,5 @@ export const memoryAgent = new Agent({
   tools: { weatherInfo },
 
   model: openai("gpt-4o"),
+  // memory: new Memory({ storage, vector }),
 });

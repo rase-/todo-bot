@@ -3,9 +3,7 @@ node_modules
 dist
 .mastra
 .DS_Store
-example.db
-vector.db
-config.db
-memory.db
+*.db
 logs.txt
 memory-vector.db
+.env*
